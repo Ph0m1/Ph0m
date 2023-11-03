@@ -1,25 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-void func(int (*arr)[13])
-{
-    for(int i=0;i<10;i++)//用i代表行
-    {
-        for(int j=0;j<13;j++)//用j代表列;
-        {
-            printf("%d\t",arr[i][j]);
-        }//逐个输出本行元素
-        printf("\n");//输出完当前行后换行
-    }
+char *convert(const char *s){
+    char *p=(char*)calloc(50,sizeof(char));
+   for(int i=0;i<strlen(s);i++){
+    if(s[i]<='z'&&s[i]>='a') p[i]=s[i]-32;
+    else if(s[i]<='Z'&&s[i]>='A') p[i]=s[i]+32;
+    else p[i]=s[i];
+   }
+   p[strlen(s)]='\0';
+   return p;
 }
-
 int main(void) {
-    int arr[10][13];
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 13; j++) {
-            arr[i][j] = rand();
-        }
-    }
-    func(arr);
+    char *str = "XiyouLinux Group 2022";
+    char *temp = convert(str);
+    puts(temp);
 }
