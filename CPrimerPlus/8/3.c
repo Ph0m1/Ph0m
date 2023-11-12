@@ -8,7 +8,6 @@ int main(int argc, char* argv[])
     int up = 0;
     int low = 0;
     char ch;
-    
     do{
         ch = getchar();
         if (ch <= 'z' && ch >= 'a')
