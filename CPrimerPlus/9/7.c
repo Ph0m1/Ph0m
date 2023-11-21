@@ -20,20 +20,24 @@ int main(int argc, char *argv[])
         printf("Can't open %s\n", argv[1]);
         exit(EXIT_FAILURE);
     }
-    while((ch = getc(fp)) != EOF){
-        
-        printf("%d", retrieval(ch));
-        fp++;
+    ch = getc(fp);
+    while (ch != EOF)
+    {
+
+        printf("%d\t", retrieval(ch));
+        ch = getc(fp);
     }
+    if(fclose(fp)!=0)
+        printf("Error in closing file %s\n", argv[1]);
 }
 
 int retrieval(char p){
     if(p<='z' && p >= 'a'){
-        return (int)(p - 'a' - 1);
+        return (p - 'a' - 1);
     }
     else if(p<='Z' && p>='A')
     {
-        return (int)(p - 'A' - 1);
+        return (p - 'A' - 1);
     }
     else
         return -1;
